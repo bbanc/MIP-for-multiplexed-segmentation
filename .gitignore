@@ -1,0 +1,92 @@
+# Tempfiles
+__pycache__/
+.ipynb_checkpoints/
+bench/**/*.ipynb
+.conda_envs/
+.github/
+.vscode/
+.snakemake
+.venv*
+.claude
+
+#.gitignore
+
+# Folders
+*.log
+logs/
+lightning_logs/
+**/checkpoints/
+**/checkpoint/
+**/models/
+**/saves/
+**/runs/
+
+# Artefacts
+*.ckpt
+*.pt
+*.pth
+*.csv
+*.png
+*.tif
+*.tiff
+
+# Remaining
+results/
+Pipeline_Demo_detailed.ipynb
+
+# Kept locally, not part of the release: superseded SAM work and the Temp prototypes
+bench/training/SAM/
+bench/training/MicroSAM_APG/
+bench/modelling/MicroSAM_APG/
+bench/inferencing/SAM_inference.py
+bench/requirements_sam.txt
+bench/training/Temp*/
+bench/modelling/Temp*/
+bench/inferencing/Temp*_inference.py
+bench/requirements_mask2former.txt
+bench/requirements_TempMaskRCNN.txt
+bench/validation/temp_models_comparison.py
+bench/figures/generate_temp_models_figures.py
+scripts/Temp_SegMet_*.py
+
+# Frozen-ChannelNet experiments (no longer used)
+bench/training/*/Experiments/*/run_channelnet.py
+
+# Local config used for the Katja runs
+config/config.katja.yaml
+
+# Old scratch notebooks at the repository root (superseded by bench/figures)
+/Intermediate representations.ipynb
+/Performance_by_Shape.ipynb
+/ZZ_Explainer_Cellpose.ipynb
+
+# Plotting helper used only by the demo notebooks
+bench/training/common/viz.py
+
+# Local launcher scripts for batches of experiments
+bench/training/**/*.sh
+bench/training/run_missing_experiments*
+bench/data/gen/generate_channelnet_rgb.py
+
+# Certificates, and the Mesmer Dockerfile that copies them
+*.crt
+certs/
+bench/modelling/Mesmer/Dockerfile
+
+# Logs, demo output and run artifacts
+run_all_logs/
+demo_output/
+events.out.tfevents.*
+bench/training/*/Stage_*/run/
+
+# Generated figures and tables
+bench/figures/export/
+
+# Example images for the demo notebook (small, 16-bit PNG)
+!example_data/
+!example_data/*.png
+
+# Paper figure notebooks and the consolidated results table
+!bench/figures/*.ipynb
+!bench/results/
+!bench/results/all_runs.csv

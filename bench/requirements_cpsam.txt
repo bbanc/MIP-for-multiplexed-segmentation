@@ -1,0 +1,16 @@
+# Cellpose-SAM environment (.venv_cpsam, Python 3.12). Needs cellpose 4.x, which conflicts with
+# the cellpose 3.1 of the main environment (requirements.txt). The versions are the ones we ran with.
+# Install the CUDA build of torch/torchvision that matches your driver.
+cellpose==4.2.1.1
+torch==2.12.1
+torchvision==0.27.1
+numpy==2.4.4
+pandas==3.0.3
+scipy==1.18.0
+scikit-image==0.26.0
+scikit-learn==1.9.0
+matplotlib==3.11.0
+tqdm==4.68.4
+pycocotools==2.0.11
+roifile==2026.2.10
+imagecodecs==2026.6.26
