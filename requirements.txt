@@ -1,0 +1,13 @@
+# Environment of the Snakemake pipeline (Snakefile, scripts/). For GPU support install the CUDA build of
+# torch that matches your driver first, then the rest.
+snakemake
+cellpose
+anndata
+numpy
+pandas
+scipy
+scikit-image
+
+# only for Pipeline_Demo.ipynb
+matplotlib
+ipykernel

@@ -1,0 +1,52 @@
+samples:
+  sample1:
+    path: example_data/
+    dapi_channel: example_data/DAPI.png
+  # Add more as required, e.g.:
+  # sample2:
+  #   path: /PATH/TO/SAMPLE2/
+  #   dapi_channel: null
+
+enable_postprocess: true # Whether to use or skip postprocessing
+enable_evaluation: false # Whether to do ground truth evaluation
+
+normalization: # Handles data I/O
+  artifact_removal:
+    mask: null # Optional: Path to binary mask, 0: pixels to use, 1: Pixels to exclude
+  intensity:
+    method: percentile  # Scaling options: minmax, percentile
+    percentiles: [1, 99]
+
+max_projection:
+  marker_selection: ["HLADR", "CD3", "CD20", "CD11c"]  # ...] channel names to keep (substring match on the filenames)
+
+segmentation: # Which segmentation algorithm to use + hyperparams
+  model: cellpose # Which model to use? 
+  hyperparameters:
+    cellpose:
+      flow_threshold: 0.4
+      cellprob_threshold: 0.0
+      model_type: null
+      model_path: null
+      use_gpu: true
+    MY_NEW_MODEL: # Placeholder
+      thresh: 0.5
+      model_path: "/PATH/TO/MODEL.pt"
+  tiling: # Whether or not to use tiling (recommended for large images) 
+    enabled: true
+    tile_size: [512, 512] # tile_size can be arbitrary (bigger is better)
+    overlap: 64 # (in px), Overlap should be at least the expected cell diameter (2x is ideal) and no more than 1/4 of tile_size 
+
+postprocess: # Cell mask-postprocessing
+  remove_small: 100 # minimum cell size (px)
+  fill_holes: 50 # fill background pockets enclosed by cells up to this size (px), 0 = off
+
+export: # Export to csv/anndata
+  intensity: true
+  shapes: true
+
+evaluation: # Optional ground-truth evaluation, requires contiguous labelled mask
+  metrics: [dice, iou, pq, f1]
+  gt_masks:
+    sample1: null
+    sample2: /PATH/TO/SAMPLE2GT/gt.tif
